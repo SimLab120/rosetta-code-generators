@@ -13,26 +13,26 @@ final class GeneratorUtils {
 		// suppress instantiation
 	}
 
-	static String toGroovyType(String typeName) {
-		switch (typeName) {
+	static String toGroovyType(String type) {
+		switch (type) {
 		case "string":
 			return "String";
 		case "int":
 			return "Integer";
 		case "number":
-			return "java.math.BigDecimal";
+			return "BigDecimal";
 		case "boolean":
 			return "Boolean";
-		case "time":
-			return "LocalTime";
 		case "date":
 			return "LocalDate";
+		case "time":
+			return "LocalTime";
 		case "dateTime":
 			return "LocalDateTime";
-		case "zonedDateTime":
-			return "ZonedDateTime";
+		case "Bar":
+			return "Bar";
 		default:
-			throw new RuntimeException("could not find the basic type for " + typeName);
+			return type;
 		}
 	}
 
@@ -45,17 +45,14 @@ final class GeneratorUtils {
 	}
 
 	static String groovyDocWithVersion(String definition, String version) {
-		if (definition != null && !definition.isEmpty()) {
-			StringBuilder sb = new StringBuilder();
-			sb.append("/**").append(LINE_SEPARATOR);
-			sb.append(" * ").append(HtmlEscapers.htmlEscaper().escape(definition)).append(LINE_SEPARATOR);
+		StringBuilder sb = new StringBuilder();
+		sb.append("/**").append(LINE_SEPARATOR);
+		if (definition != null) {
+			sb.append(" * ").append(definition).append(LINE_SEPARATOR);
 			sb.append(" *").append(LINE_SEPARATOR);
-			sb.append(" * @version ").append(version).append(LINE_SEPARATOR);
-			sb.append("*/").append(LINE_SEPARATOR);
-			return sb.toString();
-		} else {
-			return emptyGroovyDocWithVersion(version);
 		}
-
+		sb.append(" * @version ").append(version).append(LINE_SEPARATOR);
+		sb.append("*/");
+		return sb.toString();
 	}
 }
