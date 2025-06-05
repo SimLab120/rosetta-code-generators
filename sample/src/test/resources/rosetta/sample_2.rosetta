@@ -1,0 +1,19 @@
+namespace "com.rosetta.model"
+version "test"
+
+type Foo: <"A sample class">
+
+    stringAttribute string (1..1)
+    intAttribute int (1..1)
+    multipleAttribute string (1..*)
+// additional fields
+    dateAttribute date (1..1)
+    booleanAttribute boolean (1..1)
+    amountAttribute number (0..1)
+    barReference Bar (0..1)
+
+type Bar: <"Another sample class">
+    name string (1..1)
+    description string (0..1)
+    value number (1..1)
+    isActive boolean (1..1)

@@ -1,0 +1,8 @@
+namespace "com.rosetta.model"
+version "test"
+
+import drr.regulation.common.*
+
+type CFTCPart43TransactionReport:
+    
+    cleared Max1Text (1..1)

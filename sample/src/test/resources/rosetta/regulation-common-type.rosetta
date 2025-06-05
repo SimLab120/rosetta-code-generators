@@ -1,0 +1,22 @@
+namespace drr.regulation.common
+version "5.20.1"
+
+import cdm.base.staticdata.asset.common.*
+import cdm.base.staticdata.party.*
+import cdm.event.common.*
+import cdm.event.workflow.*
+import cdm.observable.asset.*
+import cdm.product.collateral.*
+import cdm.product.asset.*
+import drr.enrichment.common.*
+import drr.regulation.esma.emir.refit.trade.*
+import cdm.product.template.*
+import cdm.product.common.settlement.*
+import iso20022.auth108.esma.*
+import com.regnosys.rosetta.rosetta.simple.typeAlias
+
+
+
+typeAlias Max1Text: <"Specifies an alphabetical string with a maximum length of 1 character.">
+    string(minLength: 1, maxLength: 1, pattern: "[a-zA-Z]")
+
